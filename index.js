@@ -2,10 +2,9 @@ var http = require('http');
 var express = require('express');
 var winston = require('winston');
 var expressWinston = require('express-winston');
-var mysql = require('mysql');
-var mysqlConfig = require('./mysqlConfig.js');
+// var mysql = require('mysql');
 const bodyParser = require('body-parser');
-var db = require('./dbConnection.js');
+// var db = require('./dbConnection.js');
 
 var app = express();
 

@@ -1,9 +1,10 @@
 var quotesRouter = require('express').Router();
-var db = require('../dbConnection.js');
+var Quote = require('../Models/quotesModel');
 
 quotesRouter.get('/', function (req, res) {
   console.log('GET ALL QUOTES');
-  db.getAllQuotes(function(err, results) {
+
+  Quote.getAllQuotes(function(err, results) {
     if (err) throw err;
     return res.send({ error: false, data: results, message: 'Quotes list' });
   });
@@ -15,7 +16,7 @@ quotesRouter.post('/', function(req, res) {
     author: req.body.author,
     body: req.body.body
   }
-  db.createQuote(quote, function(err, results) {
+  Quote.addQuote(quote, function(err, results) {
     if (err) throw err;
     return res.send({ error: false, data: results, message: 'Quote inserted' });
   });
