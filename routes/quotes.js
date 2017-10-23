@@ -14,20 +14,34 @@ quotesRouter.post('/', function(req, res) {
     console.log(req.body.text);
       QuoteModel.searchQuote(req.body.text, function(err, results) {
           if (err) throw err;
-          return res.send({ error: false, data: results, message: 'Quotes list' });
+          return res.send({ error: false, data: results, message: 'Quotes search result' });
       });
   }
   else {
       var quote = {
           author: req.body.author,
           body: req.body.body,
-          author_photo: null
+          author_photo: req.body.author_photo
       };
       QuoteModel.addQuote(quote, function(err, results) {
           if (err) throw err;
           return res.send({ error: false, data: results, message: 'Quote inserted' });
       });
   }
+});
+
+quotesRouter.put('/', function (req, res) {
+  var quote = {
+      id: req.body.id,
+      author: req.body.author,
+      body: req.body.body,
+      author_photo: req.body.author_photo
+  };
+    QuoteModel.updateQuote(quote.id, quote, function (err, results) {
+        if (err) throw err;
+        return res.send({ error: false, data: results, message: 'Quote updated' });
+    });
+
 });
 
 

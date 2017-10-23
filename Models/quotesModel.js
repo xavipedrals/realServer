@@ -22,7 +22,7 @@ var QuoteModel = {
         return db.query("DELETE FROM quotes WHERE id=?", [id], callback);
     },
     updateQuote: function(id, quote, callback) {
-        return db.query("UPDATE quote SET author=?,body=?,author_photo=? where id=?", [quote.author, quote.body, quote.author_photo, id], callback);
+        return db.query("UPDATE quotes SET author=?,body=?,author_photo=? where id=?", [quote.author, quote.body, quote.author_photo, id], callback);
     }
 };
 
