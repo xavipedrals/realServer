@@ -1,20 +1,29 @@
 var db = require('../dbConnection');
+
 var QuoteModel = {
+    createTable: function (callback) {
+        return db.query("CREATE TABLE IF NOT EXISTS quotes(\n" +
+            "  id int PRIMARY KEY auto_increment,\n" +
+            "  author VARCHAR(255) NOT NULL,\n" +
+            "  body varchar(255) NOT NULL,\n" +
+            "  author_photo varchar(255));", callback);
+    },
     getAllQuotes: function(callback) {
         return db.query("SELECT * FROM quotes", callback);
     },
-    getTaskById: function(id, callback) {
-        return db.query("select * from task where Id=?", [id], callback);
+    searchQuote: function(text, callback) {
+        return db.query("SELECT * FROM quotes WHERE body LIKE '%" + text + "%'", callback);
     },
-    addQuote: function(Quote, callback) {
-      console.log(Quote);
-        return db.query("INSERT INTO quotes VALUES(?,?, ?)", [null, Quote.author, Quote.body], callback);
+    addQuote: function(quote, callback) {
+      console.log(quote);
+        return db.query("INSERT INTO quotes VALUES(?,?,?,?)", [null, quote.author, quote.body, quote.author_photo], callback);
     },
-    deleteTask: function(id, callback) {
-        return db.query("delete from task where Id=?", [id], callback);
+    deleteQuote: function(id, callback) {
+        return db.query("DELETE FROM quotes WHERE id=?", [id], callback);
     },
-    updateTask: function(id, Task, callback) {
-        return db.query("update task set Title=?,Status=? where Id=?", [Task.Title, Task.Status, id], callback);
+    updateQuote: function(id, quote, callback) {
+        return db.query("UPDATE quote SET author=?,body=?,author_photo=? where id=?", [quote.author, quote.body, quote.author_photo, id], callback);
     }
 };
+
 module.exports = QuoteModel;

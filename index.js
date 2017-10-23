@@ -1,10 +1,9 @@
-var http = require('http');
 var express = require('express');
 var winston = require('winston');
 var expressWinston = require('express-winston');
-// var mysql = require('mysql');
-const bodyParser = require('body-parser');
-// var db = require('./dbConnection.js');
+var bodyParser = require('body-parser');
+var quoteModel = require('./Models/quotesModel');
+var authorModel = require('./Models/authorModel');
 
 var app = express();
 
@@ -27,20 +26,19 @@ app.use(expressWinston.logger({
 
 app.get('/', function(req, res, next) {
 	console.log("I'm up and running!");
-  next();
+    next();
 });
 
-// function createTable() {
-//   var createQuoteTable = "CREATE TABLE IF NOT EXISTS quotes(id int PRIMARY KEY auto_increment,author VARCHAR(255)NOT NULL,body varchar(255)not null)";
-//   connection.query(createQuoteTable, function(err, results, fields) {
-//     if (err) {
-//       console.log(err.message);
-//     }
-//   });
-// }
-//
+quoteModel.createTable(function(err) {
+    if (err) throw err;
+});
 
-app.use('/quotes', require('./routes/quotes'));
+authorModel.createTable(function(err) {
+    if (err) throw err;
+});
+
+//Routes
+app.use('/quote', require('./routes/quotes'));
 
 app.listen(8080, function () {
     console.log('Node app is running on port 8080');
