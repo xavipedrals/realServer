@@ -4,7 +4,7 @@ var QuoteModel = require('../Models/quotesModel');
 quotesRouter.get('/', function (req, res) {
       QuoteModel.getAllQuotes(function(err, results) {
           if (err) throw err;
-          return res.send({ error: false, data: results, message: 'Quotes list' });
+          return res.status(200).send({ error: false, data: results, message: 'Quotes list' });
       });
 });
 
@@ -14,7 +14,7 @@ quotesRouter.post('/', function(req, res) {
     console.log(req.body.text);
       QuoteModel.searchQuote(req.body.text, function(err, results) {
           if (err) throw err;
-          return res.send({ error: false, data: results, message: 'Quotes search result' });
+          return res.status(200).send({ error: false, data: results, message: 'Quotes search result' });
       });
   }
   else {
@@ -25,7 +25,7 @@ quotesRouter.post('/', function(req, res) {
       };
       QuoteModel.addQuote(quote, function(err, results) {
           if (err) throw err;
-          return res.send({ error: false, data: results, message: 'Quote inserted' });
+          return res.status(200).send({ error: false, data: results, message: 'Quote inserted' });
       });
   }
 });
@@ -39,9 +39,8 @@ quotesRouter.put('/', function (req, res) {
   };
     QuoteModel.updateQuote(quote.id, quote, function (err, results) {
         if (err) throw err;
-        return res.send({ error: false, data: results, message: 'Quote updated' });
+        return res.status(200).send({ error: false, data: results, message: 'Quote updated' });
     });
-
 });
 
 
