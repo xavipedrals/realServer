@@ -24,10 +24,10 @@ app.use(expressWinston.logger({
   colorStatus: true
 }));
 
-app.get('/', function(req, res, next) {
-	console.log("I'm up and running!");
-    next();
-});
+//app.get('*', function(req, res, next) {
+    //next();
+//    res.sendFile('./frontend/index.html');
+//});
 
 quoteModel.createTable(function(err) {
     if (err) throw err;
