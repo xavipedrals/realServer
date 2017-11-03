@@ -1,18 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="quotesApp">
 <head>
     <meta charset="UTF-8">
     <title>Quotes</title>
 </head>
-<body>
-
-<div ng-app="quotesApp" ng-controller="mainController">
-    <p>Name : <input type="text" ng-model="name"></p>
-    <h1>Hello {{name}}</h1>
+<body ng-controller="mainController as vm">
+<input type="text" class="search" ng-model="searchString" placeholder="Search any quote or author" />
+<div>
+    <div ng-repeat="quote in vm.quotes | searchAuthorAndBody: searchString">
+        <img src="{{quote.author_photo}}">
+        <p>{{quote.body}}</p>
+        <p>{{quote.author}}</p>
+    </div>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-csp.css"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+
+<script src="app.js"></script>
+<script src="services.js"></script>
+
 </body>
 </html>

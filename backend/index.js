@@ -4,6 +4,7 @@ var expressWinston = require('express-winston');
 var bodyParser = require('body-parser');
 var quoteModel = require('./Models/quotesModel');
 var authorModel = require('./Models/authorModel');
+var cors = require('cors');
 
 var app = express();
 
@@ -11,6 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+app.use(cors());
 
 //This middleware shows us all the requests we are recieving
 app.use(expressWinston.logger({
