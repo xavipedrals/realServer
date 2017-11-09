@@ -2,8 +2,8 @@ function QuotesListController(QuotesFactory) {
     var vm = this;
 
     QuotesFactory.getQuotes().then(function (quotes) {
-        console.log('Hola');
-        console.log(quotes);
+        // console.log('Hola');
+        // console.log(quotes);
         vm.quotes = quotes.data;
     })
 }
