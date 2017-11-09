@@ -7,18 +7,7 @@
 </head>
 <body ng-controller="mainController as vm">
 <div class="container">
-    <div class="input-group input-group-lg">
-        <input type="text" class="form-control" ng-model="searchString" placeholder="Search any quote or author">
-
-    </div>
-    <br>
-    <div>
-        <div ng-repeat="quote in vm.quotes | searchAuthorAndBody: searchString">
-            <img src="{{quote.author_photo}}" class="rounded-circle">
-            <p>{{quote.body}}</p>
-            <p>{{quote.author}}</p>
-        </div>
-    </div>
+    <ui-view></ui-view>
 </div>
 
 <script src="bower_components/angular/angular.min.js"></script>
@@ -26,9 +15,11 @@
 <script src="bower_components/angular-bootstrap/ui-bootstrap-csp.css"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script>
 
 <script src="app.js"></script>
 <script src="services.js"></script>
+<script src="quotes-list/quotes-list.component.js"></script>
 
 </body>
 </html>

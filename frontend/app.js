@@ -1,36 +1,25 @@
 var app = angular.module('quotesApp', [
+    'ui.router',
     'quotesApp.services'
-
+    //'quotesApp.routes'
     ])
     .constant('myConfig', {
         'baseUrl': 'http://localhost',
         'port': '8080'
     });
 
+app.config(function($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.otherwise('/');
+
+        $stateProvider
+            .state('home', {
+                url: '/',
+                template: '<quotes-list></quotes-list>'
+            })
+    }
+);
+
 app.controller('mainController', function (QuotesFactory) {
-    this.hello = "Hello world";
     var vm = this;
-
-    QuotesFactory.getQuotes().then(function (quotes) {
-        console.log('Hola');
-        console.log(quotes);
-        vm.quotes = quotes.data;
-    })
-
 });
 
-app.filter('searchAuthorAndBody', function(){
-    return function(arr, searchString){
-        if(!searchString){
-            return arr;
-        }
-        var result = [];
-        searchString = searchString.toLowerCase();
-        angular.forEach(arr, function(quote){
-            if((quote.body.toLowerCase().indexOf(searchString) !== -1) || (quote.author.toLowerCase().indexOf(searchString) !== -1)){
-                result.push(quote);
-            }
-        });
-        return result;
-    };
-});
