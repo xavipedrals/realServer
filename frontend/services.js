@@ -19,7 +19,30 @@ angular.module('quotesApp.services', [])
             return q.promise;
         }
 
+        function addQuote(authorName, authorPhoto, quote) {
+            var q = $q.defer();
+            $http({
+                method: 'POST',
+                url: baseUrl + '/quote',
+                data: {
+                    "author": authorName,
+                    "body": quote,
+                    "author_photo": authorPhoto
+                }
+            }).then(function successCallback(response) {
+                console.log("POST quote success");
+                console.log(response);
+                q.resolve();
+            }, function errorCallback(response) {
+                console.log("POST quote failure");
+                console.log(response);
+                q.reject();
+            });
+            return q.promise;
+        }
+
         return {
-            getQuotes: getQuotes
+            getQuotes: getQuotes,
+            addQuote: addQuote
         }
     }]);

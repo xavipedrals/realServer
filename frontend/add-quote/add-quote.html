@@ -1,6 +1,10 @@
 <div>
-    <input type="text" class="form-control" ng-model="author.name" placeholder="Author name">
-    <input type="text" class="form-control" ng-model="author.photo" placeholder="Author photo link">
-    <input type="text" class="form-control" ng-model="quote.body" placeholder="Quote">
+    <input type="text" class="form-control" ng-model="vm.author.name" placeholder="Author name">
+    <br>
+    <input type="text" class="form-control" ng-model="vm.author.photo" placeholder="Author photo link">
+    <br>
+    <input type="text" class="form-control" ng-model="vm.quote" placeholder="Quote">
+    <br>
+    <button class="btn btn-primary btn-lg" ng-click="vm.submitQuote();">Send</button>
 
 </div>
