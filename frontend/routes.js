@@ -8,5 +8,9 @@ angular.module('quotesApp.routes', [])
                 url: '/',
                 template: '<quotes-list></quotes-list>'
             })
+            .state('addQuote', {
+                url: '/addQuote',
+                template: '<add-quote></add-quote>'
+            })
     }
 );
