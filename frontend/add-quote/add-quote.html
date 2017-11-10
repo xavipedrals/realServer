@@ -4,6 +4,7 @@
         <br>
         <input name="authorPhoto" type="text" class="form-control" ng-model="vm.author.photo" placeholder="Author photo link">
         <br>
+        <img class="rounded-circle" ng-src="{{vm.author.photo}}">
         <input name="quote" type="text" class="form-control" ng-model="vm.quote" placeholder="Quote" required>
         <br>
         <button class="btn btn-primary btn-lg" ng-disabled="addQuoteForm.$invalid" ng-click="vm.submitQuote();">Send</button>
