@@ -1,0 +1,7 @@
+<form name="loginForm">
+    <input name="username" type="text" class="form-control" ng-model="vm.username" placeholder="Username" required>
+    <br>
+    <input name="password" type="text" class="form-control" ng-model="vm.password" placeholder="Password" required>
+    <br>
+    <button class="btn btn-primary btn-lg" ng-disabled="loginForm.$invalid" ng-click="vm.submitQuote();">Login</button>
+</form>
