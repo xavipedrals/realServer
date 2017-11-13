@@ -1,11 +1,15 @@
-<div class="input-group input-group-lg">
+<div class="searchBar input-group input-group-lg">
     <input type="text" class="form-control" ng-model="searchString" placeholder="Search any quote or author">
 </div>
 <br>
 <div>
-    <div ng-repeat="quote in vm.quotes | searchAuthorAndBody: searchString">
+    <div class="quoteContainer" ng-repeat="quote in vm.quotes | searchAuthorAndBody: searchString">
         <img src="{{quote.author_photo}}" class="rounded-circle">
-        <p>{{quote.body}}</p>
-        <p>{{quote.author}}</p>
+        <div class="textExtraContainer">
+            <div class="textContainer">
+                <p class="quoteBody">"{{quote.body}}"</p>
+                <p class="quoteAuthor">- {{quote.author}}</p>
+            </div>
+        </div>
     </div>
 </div>
