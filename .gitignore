@@ -133,3 +133,7 @@ fabric.properties
 .idea/sonarlint
 
 # End of https://www.gitignore.io/api/node,bower,webstorm
+### Sass ###
+frontend/styles/.sass-cache/
+frontend/styles/*.css.map
+
