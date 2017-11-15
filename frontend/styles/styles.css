@@ -1,0 +1,38 @@
+@font-face {
+  font-family: "Libre Baskerville";
+  src: url("https://fonts.googleapis.com/css?family=Libre+Baskerville"); }
+body {
+  font-family: "Libre Baskerville"; }
+
+.navbar-brand {
+  font-size: 2em; }
+
+.searchBar {
+  padding-top: 100px;
+  padding-bottom: 20px; }
+  .searchBar input {
+    height: 2.5em !important;
+    border-radius: 2em !important;
+    font-size: 2em !important;
+    text-indent: 1em !important;
+    border-width: 3px !important; }
+
+.quoteContainer {
+  display: flex;
+  padding-top: 60px;
+  padding-bottom: 60px; }
+  .quoteContainer img {
+    height: 220px;
+    width: 220px;
+    flex: none; }
+  .quoteContainer .textExtraContainer {
+    display: flex;
+    align-items: center;
+    padding-left: 50px; }
+    .quoteContainer .textExtraContainer .quoteBody {
+      font-size: 1.75em; }
+    .quoteContainer .textExtraContainer .quoteAuthor {
+      color: gray;
+      font-size: 1.4em; }
+
+/*# sourceMappingURL=styles.css.map */
