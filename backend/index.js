@@ -41,6 +41,7 @@ authorModel.createTable(function(err) {
 
 //Routes
 app.use('/quote', require('./routes/quotes'));
+app.use('/auth', require('./routes/authentification'));
 
 app.listen(8080, function () {
     console.log('Node app is running on port 8080');
