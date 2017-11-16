@@ -2,6 +2,7 @@ var app = angular.module('quotesApp', [
     'ui.router',
     'quotesApp.services',
     'quotesApp.routes'
+    //'ngCookies'
     ])
     .constant('myConfig', {
         'baseUrl': 'http://localhost',

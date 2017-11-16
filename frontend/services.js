@@ -1,4 +1,4 @@
-angular.module('quotesApp.services', [])
+angular.module('quotesApp.services', ['ngCookies'])
     .factory('QuotesFactory', ['$http', '$q', 'myConfig', function ($http, $q, myConfig) {
         var baseUrl = myConfig.baseUrl + ':' + myConfig.port;
 
@@ -47,52 +47,56 @@ angular.module('quotesApp.services', [])
         }
     }])
 
-    .factory('AuthFactory', ['$http', '$q', '$cookies', '$timeout', 'myConfig', function ($http, $q, myConfig) {
+    .factory('AuthFactory', ['$http', '$q', '$cookies', 'myConfig', function ($http, $q, $cookies, myConfig) {
 
         var _ = window._;
         var TOKEN_STORAGE_KEY = 'token';
-        var currentUser = getCurrentUser();
+        //var currentUser = getCurrentUser();
 
-        var baseUrl = myConfig.url + ':' + myConfig.port + '/user';
+        var baseUrl = myConfig.baseUrl + ':' + myConfig.port;
 
-        function getCurrentUser() {
-            var token = window.localStorage.getItem(TOKEN_STORAGE_KEY);
-            var user = {};
-            if (typeof token !== 'undefined' && !(token === null)) {
-                var encoded = token.split('.')[1];
-                user = JSON.parse(window.atob(encoded));
-            }
-            return user;
-        }
+        // function getCurrentUser() {
+        //     var token = window.localStorage.getItem(TOKEN_STORAGE_KEY);
+        //     var user = {};
+        //     if (typeof token !== 'undefined' && !(token === null)) {
+        //         var encoded = token.split('.')[1];
+        //         user = JSON.parse(window.atob(encoded));
+        //     }
+        //     return user;
+        // }
 
-        var isAuthenticated = function() {
-            return !(_.isEmpty(currentUser));
-        };
+        // var isAuthenticated = function() {
+        //     return !(_.isEmpty(currentUser));
+        // };
+        //
+        // var logout = function() {
+        //     window.localStorage.removeItem(TOKEN_STORAGE_KEY);
+        //     return;
+        // };
 
-        var logout = function() {
-            window.localStorage.removeItem(TOKEN_STORAGE_KEY);
-            return;
-        };
-
-        var login = function (username, pass) {
+        var login = function (email, pass) {
             var q = $q.defer();
-            $http.get(baseUrl + '/login', {
-                params: {
-                    "username": username,
+            $http({
+                method: 'POST',
+                url: baseUrl + '/auth',
+                data: {
+                    "email": email,
                     "password": pass
                 }
             }).then(function successCallback(response) {
-                window.localStorage.setItem(TOKEN_STORAGE_KEY, response.data.Token);
-                currentUser = getCurrentUser();
-                //getCurrentUserData();
-                q.resolve(response);
+                console.log(response.data.token);
+                $cookies.put('token', response.data.token);
+                q.resolve();
             }, function errorCallback(response) {
-                console.log("Error al GET user/login");
+                console.log("Error al GET /auth");
                 console.log(response);
                 q.reject();
             });
-            console.log('currentuserlogin2: ' + currentUser.userid);
 
             return q.promise;
         };
+
+        return {
+            login: login
+        }
     }]);

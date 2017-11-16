@@ -12,5 +12,10 @@ angular.module('quotesApp.routes', [])
                 url: '/addQuote',
                 template: '<add-quote></add-quote>'
             })
+            .state('login', {
+                url: '/login',
+                template: '<login></login>'
+            })
+
     }
 );

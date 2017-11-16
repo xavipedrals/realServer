@@ -1,10 +1,13 @@
-function LoginController() {
+function LoginController(AuthFactory) {
     var vm = this;
 
     vm.login = function () {
-        console.log(vm.username);
-        console.log(vm.password);
-
+        AuthFactory.login(vm.email, vm.password).then(function successCallback() {
+            console.log('SUCCESS');
+            location
+        }, function errorCallback() {
+            console.log('OH NO :(');
+        })
     };
 }
 
