@@ -4,7 +4,7 @@
 <br>
 <div>
     <div class="quoteContainer" ng-repeat="quote in vm.quotes | searchAuthorAndBody: searchString">
-        <img src="{{quote.author_photo}}" class="rounded-circle">
+        <img ng-src="{{quote.author_photo || ('http://via.placeholder.com/220?text=Not+Found')}}" class="rounded-circle">
         <div class="textExtraContainer">
             <div class="textContainer">
                 <p class="quoteBody">"{{quote.body}}"</p>

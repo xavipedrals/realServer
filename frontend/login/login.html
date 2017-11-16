@@ -1,7 +1,9 @@
 <form name="loginForm">
-    <input name="email" type="text" class="form-control" ng-model="vm.email" placeholder="Email" required>
+    <input name="email" type="email" class="form-control" ng-model="vm.email" placeholder="Email" required>
+    <span class="error" ng-show="loginForm.email.$error.email && loginForm.email.$touched">The email format is incorrect</span>
     <br>
-    <input name="password" type="text" class="form-control" ng-model="vm.password" placeholder="Password" required>
+    <input name="password" type="password" class="form-control" ng-model="vm.password" placeholder="Password" required>
+    <span class="error" ng-show="loginForm.password.$invalid && loginForm.password.$touched">You need to type a password</span>
     <br>
     <button class="btn btn-primary btn-lg" ng-disabled="loginForm.$invalid" ng-click="vm.login();">Login</button>
 </form>

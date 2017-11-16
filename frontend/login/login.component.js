@@ -1,10 +1,15 @@
-function LoginController(AuthFactory) {
+function LoginController(AuthFactory, $state) {
     var vm = this;
+
+    vm.validMail = function () {
+        vm.email
+    }
 
     vm.login = function () {
         AuthFactory.login(vm.email, vm.password).then(function successCallback() {
             console.log('SUCCESS');
-            location
+            $state.go('home');
+
         }, function errorCallback() {
             console.log('OH NO :(');
         })
