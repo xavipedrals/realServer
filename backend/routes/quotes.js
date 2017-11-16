@@ -1,5 +1,7 @@
 var quotesRouter = require('express').Router();
 var QuoteModel = require('../Models/quotesModel');
+var express_jwt = require('express-jwt');
+var secret = "S0m3ultr4s3cur3s3cr3t";
 
 quotesRouter.get('/', function (req, res) {
       QuoteModel.getAllQuotes(function(err, results) {
@@ -8,7 +10,7 @@ quotesRouter.get('/', function (req, res) {
       });
 });
 
-quotesRouter.post('/', function(req, res) {
+quotesRouter.post('/', express_jwt({secret: secret}), function(req, res) {
   if (req.body.text) {
     console.log("SEARCH");
     console.log(req.body.text);
