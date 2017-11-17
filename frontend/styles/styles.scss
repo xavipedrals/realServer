@@ -4,11 +4,18 @@
 }
 
 body {
-  font-family: "Libre Baskerville";
+  //font-family: "Libre Baskerville"
+  background-color: antiquewhite !important;
+
 }
 
+.navbar {
+  background-color: antiquewhite !important;
+
+}
 .navbar-brand {
-  font-size: 2em;
+  font-size: 2.5em;
+
 }
 
 .searchBar {
@@ -18,10 +25,14 @@ body {
   input {
     height: 2.5em !important;
     border-radius: 2em !important;
-    font-size: 2em !important;
+    font-size: 1.5em !important;
     text-indent: 1em !important;
     border-width: 3px !important;
   }
+}
+
+.oldText {
+  //font-family: "Libre Baskerville";
 }
 
 .quoteContainer {
@@ -42,7 +53,7 @@ body {
 
     .quoteBody {
       //font-family: "Libre Baskerville";
-      font-size: 1.75em;
+      font-size: 1.5em;
     }
 
     .quoteAuthor {

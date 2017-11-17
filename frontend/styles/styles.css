@@ -2,10 +2,13 @@
   font-family: "Libre Baskerville";
   src: url("https://fonts.googleapis.com/css?family=Libre+Baskerville"); }
 body {
-  font-family: "Libre Baskerville"; }
+  background-color: antiquewhite !important; }
+
+.navbar {
+  background-color: antiquewhite !important; }
 
 .navbar-brand {
-  font-size: 2em; }
+  font-size: 2.5em; }
 
 .searchBar {
   padding-top: 100px;
@@ -13,7 +16,7 @@ body {
   .searchBar input {
     height: 2.5em !important;
     border-radius: 2em !important;
-    font-size: 2em !important;
+    font-size: 1.5em !important;
     text-indent: 1em !important;
     border-width: 3px !important; }
 
@@ -30,7 +33,7 @@ body {
     align-items: center;
     padding-left: 50px; }
     .quoteContainer .textExtraContainer .quoteBody {
-      font-size: 1.75em; }
+      font-size: 1.5em; }
     .quoteContainer .textExtraContainer .quoteAuthor {
       color: gray;
       font-size: 1.4em; }
