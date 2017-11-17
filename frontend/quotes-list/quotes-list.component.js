@@ -1,11 +1,20 @@
-function QuotesListController(QuotesFactory) {
+function QuotesListController(QuotesFactory,$scope ) {
     var vm = this;
 
     QuotesFactory.getQuotes().then(function (quotes) {
-        // console.log('Hola');
-        // console.log(quotes);
         vm.quotes = quotes.data;
     })
+
+  vm.changeColor = function (id, bool) {
+/*        if(bool){
+            //vm.colorQuote = {color: '#'+quote.colour};
+
+        }
+        else{
+            //vm.colorQuote = {color: 'white'};
+
+        }*/
+    };
 }
 
 app.component('quotesList', {
